@@ -1,0 +1,39 @@
+{
+  "name": "#78",
+  "description": "Backgrounds",
+  "external_url": "",
+  "image": "78.webp",
+  "attributes": [
+    {
+      "trait_type": "Sky",
+      "value": "sky"
+    },
+    {
+      "trait_type": "Clouds",
+      "value": "clouds_3"
+    },
+    {
+      "trait_type": "Rocks",
+      "value": "rocks_2"
+    },
+    {
+      "trait_type": "Ground",
+      "value": "ground_1"
+    },
+    {
+      "trait_type": "Objects",
+      "value": "pines"
+    }
+  ],
+  "properties": {
+    "category": "image",
+    "files": [
+      {
+        "uri": "78.webp",
+        "type": "image/webp"
+      }
+    ],
+    "creators": []
+  },
+  "compiler": "https://nft-generator.art"
+}
