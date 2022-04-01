@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
@@ -11,7 +11,7 @@ contract Web3BG is ERC721, ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("Web3BG", "W3BG") {}
+    constructor() ERC721("Web3BG", "W3G") {}
 
     mapping(string => uint8) existingURIs;
 
@@ -42,7 +42,7 @@ contract Web3BG is ERC721, ERC721URIStorage, Ownable {
     }
 
     function isContentOwned(string memory uri) public view returns (bool) {
-    return existingURIs[uri] == 1;
+        return existingURIs[uri] == 1;
     }
 
     function payToMint(
@@ -51,15 +51,15 @@ contract Web3BG is ERC721, ERC721URIStorage, Ownable {
     ) public payable returns (uint256) {
         require(existingURIs[metadataURI] != 1, 'NFT is already minted');
         require (msg.value >= 0.05 ether, 'Not enough ETH');
-        
-        uint256 tokenId = _tokenIdCounter.current();
+
+      uint256 newItemId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         existingURIs[metadataURI] = 1;
 
-        _mint(recipient, tokenId);
-        _safeMint(msg.sender, tokenId);
-        _setTokenURI(tokenId, metadataURI);
-        return tokenId;
+        _mint(recipient, newItemId);
+        _setTokenURI(newItemId, metadataURI);
+
+        return newItemId;
     }
 
     function count() public view returns (uint256) {
