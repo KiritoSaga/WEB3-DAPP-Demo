@@ -47,11 +47,11 @@ contract Web3BG is ERC721, ERC721URIStorage, Ownable {
 
     function payToMint(
         address recipient,
-        string memory metadataURI,
-        uint256 amount
+        string memory metadataURI
     ) public payable returns (uint256) {
         require(existingURIs[metadataURI] != 1, 'NFT is already minted');
         require (msg.value >= 0.05 ether, 'Not enough ETH');
+        
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         existingURIs[metadataURI] = 1;
